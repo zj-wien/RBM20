@@ -1,0 +1,56 @@
+<pre>
+
+### `01.sample.sh`
+
+```bash
+ls ./RBM20/00.data/*_2.fq.gz | \
+awk -F '/' '{print $7"\t"$0}' | \
+awk -F '_' '{print $1"_"$2"\t"$0}' | \
+cut -f1,3 | \
+awk '{print $1"\t"$1"\t"$2"\t"$2}' | \
+sed 's/2.fq.gz/1.fq.gz/' | \
+sed 's/@//g' > sample.list
+```
+
+---
+
+### `02.produce.submit.sh`
+
+```bash
+cat sample.list | \
+awk '{print "sh ./RBM20/03.expression/01.hisat2.stringtie/call.hisat2.stringtie.sh "$3"\t"$4"\t"$2"\t./RBM20/03.expression/01.hisat2.stringtie"}' \
+> submit.all.sh
+```
+
+---
+
+### `call.hisat2.stringtie.sh`
+
+```bash
+# $1 = fq1_path
+# $2 = fq2_path
+# $3 = sample_name
+# $4 = outdir
+
+date
+mkdir -p $4/$3
+cd $4/$3
+
+~/miniconda3/bin/hisat2 -x ./01.genome/Chrysemys_scripta \
+    -p 8 -1 $1 -2 $2 -S $4/$3/$3.sam
+
+samtools sort $4/$3/$3.sam -@ 8 -O BAM -o $4/$3/$3.sort.bam
+samtools index $4/$3/$3.sort.bam
+
+~/miniconda3/bin/stringtie $4/$3/$3.sort.bam \
+    -o $4/$3/$3.gtf -p 8 \
+    -G ./02.annotation/GCF_013100865.1_CAS_Tse_1.0_genomic.gff
+
+# rm -f $TMPDIR/$3.sam
+
+date
+```
+
+</pre>
+
+
