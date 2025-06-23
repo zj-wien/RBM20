@@ -1,0 +1,1 @@
+ls /RBM20/00.data/*_2.fq.gz  |   awk -F '/' '{print $7"\t"$_}' |  awk -F '_' '{print $1"_"$2"\t"$0}' | cut -f1,3 |  awk '{print  $1"\t"$1"\t"$2"\t"$2}' |   sed 's/2.fq.gz/1.fq.gz/' | sed 's/@//g' >  sample.list
