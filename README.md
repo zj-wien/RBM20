@@ -61,12 +61,7 @@ We analyzed gonadal transcriptomes from *T. scripta* under different temperature
     * ΔPSI (mean PSI difference)
     * P-values from independent t-tests comparing PSI between groups
 
-## Repository Contents
 
-* Scripts for RNA-seq preprocessing, alignment, and quantification
-* Code for differential expression and splicing analyses
-* Example configuration files and command-line instructions
-* Supplementary tables summarizing read statistics and results
 
 ## Dependencies
 
