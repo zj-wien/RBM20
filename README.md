@@ -39,7 +39,6 @@ We analyzed gonadal transcriptomes from *T. scripta* under different temperature
   * [StringTie](https://ccb.jhu.edu/software/stringtie/) (v2.2.1) for transcript abundance estimation
   * [tximport](https://bioconductor.org/packages/release/bioc/html/tximport.html) (v1.26.0) for importing expression data into R (v4.2.1)
   * Gene-level quantification with **tx2gene**
-  * Normalization using TMM (Trimmed Mean of M values)
   * Differential expression analysis performed with [Ballgown](https://bioconductor.org/packages/release/bioc/html/ballgown.html) (v4.2.0)
   * FDR threshold set at 5% for significance
 
