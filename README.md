@@ -24,7 +24,7 @@ We analyzed gonadal transcriptomes from *T. scripta* under different temperature
   * Three biological replicates per group
   * Sequenced on Illumina HiSeq 2000 (150 bp paired-end reads)
   * Yield: \~52-68 million high-quality reads per library
-    
+  * Gonadal RNA-seq dataset: https://doi.org/10.5281/zenodo.15714696  
 ## Analysis Pipeline
 
 ### 1. Gene Expression Profiling
